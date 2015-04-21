@@ -10,7 +10,7 @@ setup(ext_modules = cythonize(
       ))
 """
 
-sourcefiles=['rect.pyx', 'Rectangle.cpp', 'Circle.cpp', 'ShapeBase.cpp']
+sourcefiles=['rect.pyx', 'Rectangle.cpp', 'Circle.cpp', 'ShapeBase.cpp', 'func.cpp']
 
 extensions = [Extension('rect', sourcefiles, language="c++", extra_compile_args=['-std=c++11', '-O3'])]
 

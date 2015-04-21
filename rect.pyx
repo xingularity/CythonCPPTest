@@ -1,3 +1,4 @@
+from libcpp.vector cimport vector
 cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Rectangle:
         Rectangle(double, double, double, double) except +
@@ -23,6 +24,10 @@ cdef extern from "Shape.hpp" namespace "shapes":
         void push_back(T* xx)
         void pop_back()
         int size()
+
+cdef extern from "Shape.hpp":
+    cdef vector[double] arr1DToDoubVector(double* _arr, int m)
+    cdef void print1DVector(vector[double] _arr)
 
 cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
@@ -78,10 +83,16 @@ cdef class PyCircleCollection:
     def size(self):
         return self.thisptr.size()
 
-from libcpp.vector cimport vector
-cdef vector[int] vect
-cdef int i
-for i in range(10):
-    vect.push_back(i)
-for i in range(10):
-    print vect[i]
+#from libcpp.vector cimport vector
+#cdef vector[int] vect
+#cdef int i
+#for i in range(10):
+#    vect.push_back(i)
+#for i in range(10):
+#    print vect[i]
+
+import numpy as np
+cimport numpy as np
+
+def ndarrayToVector(np.ndarray[double, ndim=1, mode="c"] _ndarray not None):
+    return arr1DToDoubVector(&_ndarray[0], _ndarray.shape[0])

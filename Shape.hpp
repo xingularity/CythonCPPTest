@@ -1,5 +1,6 @@
 #include <tuple>
 #include <vector>
+#include<iostream>
 
 namespace shapes {
     class ShapeBase{
@@ -60,3 +61,7 @@ namespace shapes {
         std::vector<T> collection;
     };
 }
+
+std::vector<double> arr1DToDoubVector(double* _arr, int m);
+
+void print1DVector(std::vector<double> _arr);
