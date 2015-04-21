@@ -96,3 +96,5 @@ cimport numpy as np
 
 def ndarrayToVector(np.ndarray[double, ndim=1, mode="c"] _ndarray not None):
     return arr1DToDoubVector(&_ndarray[0], _ndarray.shape[0])
+def print1DArr(np.ndarray[double, ndim=1, mode="c"] _ndarray not None):
+    print1DVector(ndarrayToVector(_ndarray))
