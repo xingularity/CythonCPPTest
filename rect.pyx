@@ -1,4 +1,7 @@
 from libcpp.vector cimport vector
+from libcpp.map cimport map
+from libcpp.string cimport string
+
 cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Rectangle:
         Rectangle(double, double, double, double) except +
@@ -28,6 +31,9 @@ cdef extern from "Shape.hpp" namespace "shapes":
 cdef extern from "Shape.hpp":
     cdef vector[double] arr1DToDoubVector(double* _arr, int m)
     cdef void print1DVector(vector[double] _arr)
+    cdef vector[vector[double]] arr2DToDoubVector(double* _arr, int m, int n);
+    cdef void print2DVector(vector[vector[double]] _arr);
+    cdef void printMap(map[string, double] _map)
 
 cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
@@ -102,3 +108,17 @@ def print1DArr(np.ndarray[double, ndim=1, mode="c"] _ndarray not None):
 
 def print1DList(list _list not None):
     print1DVector(_list)
+
+def ndarray2DToVector(np.ndarray[double, ndim=2, mode="c"] _ndarray not None):
+    return arr2DToDoubVector(&_ndarray[0, 0], _ndarray.shape[0], _ndarray.shape[1])
+
+def print2DArr(np.ndarray[double, ndim=2, mode="c"] _ndarray not None):
+    print2DVector(ndarray2DToVector(_ndarray))
+
+#2D list can be converted to 2D std::vector
+def print2DList(list _list not None):
+    print2DVector(_list)
+
+#In c++ file, the map is std::map<std::string, double>. In Python3, that std::string must be bytes type.
+def printDict(dict _map not None):
+    printMap(_map)

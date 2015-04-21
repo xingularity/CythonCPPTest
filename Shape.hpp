@@ -1,7 +1,7 @@
 #include <tuple>
 #include <vector>
-#include<iostream>
-
+#include <iostream>
+#include <map>
 namespace shapes {
     class ShapeBase{
     public:
@@ -63,6 +63,9 @@ namespace shapes {
 }
 
 std::vector<double> arr1DToDoubVector(double* _arr, int m);
-
 void print1DVector(std::vector<double> _arr);
 
+std::vector<std::vector<double> > arr2DToDoubVector(double* _arr, int m, int n);
+void print2DVector(std::vector<std::vector<double> > _arr);
+
+void printMap(std::map<std::string, double> _map);
