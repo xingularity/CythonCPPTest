@@ -1,7 +1,6 @@
 from libcpp.vector cimport vector
 from libcpp.map cimport map
 from libcpp.string cimport string
-from libcpp.complex cimport complex
 
 cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Rectangle:
@@ -32,10 +31,12 @@ cdef extern from "Shape.hpp" namespace "shapes":
 cdef extern from "Shape.hpp":
     cdef vector[double] arr1DToDoubVector(double* _arr, int m)
     cdef void print1DVector(vector[double] _arr)
-    cdef vector[vector[double]] arr2DToDoubVector(double* _arr, int m, int n);
-    cdef void print2DVector(vector[vector[double]] _arr);
+    cdef vector[vector[double]] arr2DToDoubVector(double* _arr, int m, int n)
+    cdef void print2DVector(vector[vector[double]] _arr)
     cdef void printMap(map[string, double] _map)
-    cdef void printMapOfVector(map[double, vector[complex[double] ] ] _map)
+    cdef void printMapOfComplex(map[double, double complex] _map)
+    cdef void printMapOfComplexVec(map[double, vector[complex]] _map)
+    cdef void printComplex(double complex _comp)
 
 cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
@@ -125,5 +126,18 @@ def print2DList(list _list not None):
 def printDict(dict _map not None):
     printMap(_map)
 
-def printMapOf1DArr(dict _map not None):
-    printMapOfVector(_map)
+def printCPPMapOfComplex(dict _map not None):
+    printMapOfComplex(_map)
+
+def printCPPMapOfComplexVec(dict _map not None):
+    printMapOfComplexVec(_map)
+
+def printCPPComplex(_data not None):
+    printComplex(_data)
+
+def CyVecComplex(double complex a, double complex b):
+    cdef vector.vector[double complex] vc
+    vc.push_back(a)
+    vc.push_back(b)
+    return vc
+

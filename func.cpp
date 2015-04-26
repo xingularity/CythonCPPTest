@@ -37,12 +37,23 @@ void printMap(std::map<std::string, double> _map){
 }
 
 
-void printMapOfVector(std::map<double, std::vector<std::complex<double> > > _map){
+void printMapOfComplex(std::map<double, std::complex<double> > _map){
 	for (auto& elem : _map){
-		std::cout << elem.first << ": ";
-		for(auto& data : elem.second){
-			std::cout << data << " ";
-		}
+		std::cout << elem.first << ": " << elem.second;
 		std::cout << std::endl;
 	}
+}
+
+void printComplex(std::complex<double> _comp){
+    std::cout << "print complex: " << _comp << std::endl;
+}
+
+void printMapOfComplexVec(std::map<double, std::vector<std::complex<double> > > _map){
+	for (auto& elem : _map){
+		std::cout << elem.first << ": ";
+        for(auto& data: elem.second)
+            std::cout << data << " ";
+		std::cout << std::endl;
+	}
+    
 }

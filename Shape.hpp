@@ -71,4 +71,6 @@ void print2DVector(std::vector<std::vector<double> > _arr);
 
 void printMap(std::map<std::string, double> _map);
 
-void printMapOfVector(std::map<double, std::vector<std::complex<double> > >);
+void printMapOfComplex(std::map<double, std::complex<double> > _map);
+void printMapOfComplexVec(std::map<double, std::vector<std::complex<double> > > _map);
+void printComplex(std::complex<double> _comp);
