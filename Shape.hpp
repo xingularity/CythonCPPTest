@@ -35,7 +35,7 @@ namespace shapes {
         double x0, y0;
         double radius;
     };
-    
+
     template<typename T>
     class Ellipse:public ShapeBase{
     public:
@@ -50,7 +50,7 @@ namespace shapes {
         double x0, y0;
         T lr, sr;
     };
-    
+
     template<typename T>
     class ShapeCollection{
     public:

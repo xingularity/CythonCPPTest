@@ -15,14 +15,14 @@ cdef extern from "Shape.hpp" namespace "shapes":
         Circle(double, double, double) except +
         double getArea()
         void move(double, double)
-    
+
     cdef cppclass Ellipse[T]:
         Ellipse(double, double, T, T) except +
         double getArea()
         void move(T, T)
         double getMajor()
         double getMinor()
-        
+
     cdef cppclass ShapeCollection[T]:
         ShapeCollection() except +
         void push_back(T* xx)
@@ -77,7 +77,7 @@ cdef class PyIntEllipse:
         return self.thisptr.getMajor()
     def getMinor(self):
         return self.thisptr.getMinor()
-        
+
 cdef class PyCircleCollection:
     cdef ShapeCollection[Circle] *thisptr
     def __cinit__(self):
