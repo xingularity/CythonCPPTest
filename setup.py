@@ -11,8 +11,11 @@ setup(ext_modules = cythonize(
 """
 
 sourcefiles=['rect.pyx', 'Rectangle.cpp', 'Circle.cpp', 'ShapeBase.cpp', 'func.cpp']
-
-extensions = [Extension('rect', sourcefiles, language="c++", extra_compile_args=['-std=c++11', '-O3'])]
+import platform as pm
+if pm.system() == 'Darwin':
+    extensions = [Extension('rect', sourcefiles, language="c++", extra_compile_args=['-std=c++11', '-O3'], include_dirs = ["/usr/local/lib/python3.4/site-packages/numpy/core/include/"])]
+else:
+	extensions = [Extension('rect', sourcefiles, language="c++", extra_compile_args=['-std=c++11', '-O3'])]
 
 setup(ext_modules = cythonize(extensions)
       )

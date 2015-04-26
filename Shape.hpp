@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <map>
+#include <complex>
 namespace shapes {
     class ShapeBase{
     public:
@@ -69,3 +70,5 @@ std::vector<std::vector<double> > arr2DToDoubVector(double* _arr, int m, int n);
 void print2DVector(std::vector<std::vector<double> > _arr);
 
 void printMap(std::map<std::string, double> _map);
+
+void printMapOfVector(std::map<double, std::vector<std::complex<double> > >);

@@ -35,3 +35,14 @@ void printMap(std::map<std::string, double> _map){
     for (auto& i: _map)
         std::cout << i.first << ", " << i.second << std::endl;
 }
+
+
+void printMapOfVector(std::map<double, std::vector<std::complex<double> > > _map){
+	for (auto& elem : _map){
+		std::cout << elem.first << ": ";
+		for(auto& data : elem.second){
+			std::cout << data << " ";
+		}
+		std::cout << std::endl;
+	}
+}

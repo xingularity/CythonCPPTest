@@ -1,6 +1,7 @@
 from libcpp.vector cimport vector
 from libcpp.map cimport map
 from libcpp.string cimport string
+from libcpp.complex cimport complex
 
 cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Rectangle:
@@ -34,6 +35,7 @@ cdef extern from "Shape.hpp":
     cdef vector[vector[double]] arr2DToDoubVector(double* _arr, int m, int n);
     cdef void print2DVector(vector[vector[double]] _arr);
     cdef void printMap(map[string, double] _map)
+    cdef void printMapOfVector(map[double, vector[complex[double] ] ] _map)
 
 cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
@@ -122,3 +124,6 @@ def print2DList(list _list not None):
 #In c++ file, the map is std::map<std::string, double>. In Python3, that std::string must be bytes type.
 def printDict(dict _map not None):
     printMap(_map)
+
+def printMapOf1DArr(dict _map not None):
+    printMapOfVector(_map)
