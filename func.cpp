@@ -57,3 +57,9 @@ void printMapOfComplexVec(std::map<double, std::vector<std::complex<double> > > 
 	}
     
 }
+
+void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::complex<double> > > _vec){
+    for (auto& i: _vec){
+        std::cout << i.first << ", " << i.second << std::endl;
+    }
+}
