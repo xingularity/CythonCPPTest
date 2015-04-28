@@ -3,6 +3,8 @@
 #include <iostream>
 #include <map>
 #include <complex>
+#include <set>
+
 namespace shapes {
     class ShapeBase{
     public:
@@ -76,3 +78,6 @@ void printMapOfComplexVec(std::map<double, std::vector<std::complex<double> > > 
 void printComplex(std::complex<double> _comp);
 
 void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::complex<double> > > _vec);
+
+void printSet(std::set<std::string> _set);
+

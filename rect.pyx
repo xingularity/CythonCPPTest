@@ -2,6 +2,7 @@ from libcpp.vector cimport vector
 from libcpp.map cimport map
 from libcpp.pair cimport pair
 from libcpp.string cimport string
+from libcpp.set cimport set
 
 cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Rectangle:
@@ -38,6 +39,7 @@ cdef extern from "Shape.hpp":
     cdef void printMapOfComplex(map[double, double complex] _map)
     cdef void printMapOfComplexVec(map[double, vector[complex]] _map)
     cdef void printComplex(double complex _comp)
+    cdef void printSet(set[string] _set)
     cdef void printVecOfComplexPair(vector[pair[complex, complex]])
 
 cdef class PyRectangle:
@@ -145,3 +147,6 @@ def CyVecComplex(double complex a, double complex b):
 
 def CyPrintVecOfComplexPair(list _list not None):
     printVecOfComplexPair(_list)
+
+def CyPrintSet(_set not None):
+    printSet(_set)

@@ -63,3 +63,8 @@ void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::comp
         std::cout << i.first << ", " << i.second << std::endl;
     }
 }
+
+void printSet(std::set<std::string> _set){
+	for (auto& i: _set)
+		std::cout << i << std::endl;
+}
