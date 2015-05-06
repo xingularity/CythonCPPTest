@@ -5,12 +5,19 @@ from libcpp.string cimport string
 from libcpp.set cimport set
 
 cdef extern from "Shape.hpp" namespace "shapes":
-    cdef cppclass Rectangle:
+    cdef cppclass ShapeBase:
+        ShapeBase() except +
+        double getArea()
+        void move(double,double)
+
+    cdef cppclass Rectangle(ShapeBase):
         Rectangle(double, double, double, double) except +
         double getLength()
         double getHeight()
-        double getArea()
-        void move(double, double)
+        #Can't declare this once it is declared in super class
+        #double getArea()
+        #Can't declare this once it is declared in super class
+        #void move(double, double)
 
     cdef cppclass Square(Rectangle):
         Square(double, double, double) except +
