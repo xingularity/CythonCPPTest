@@ -12,12 +12,8 @@ cdef extern from "Shape.hpp" namespace "shapes":
         double getArea()
         void move(double, double)
 
-    cdef cppclass Square:
+    cdef cppclass Square(Rectangle):
         Square(double, double, double) except +
-        double getLength()
-        double getHeight()
-        double getArea()
-        void move(double, double)
 
     cdef cppclass Circle:
         Circle(double, double, double) except +
