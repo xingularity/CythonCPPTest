@@ -38,3 +38,5 @@ void Rectangle::move(double dx, double dy)
     x1 += dx;
     y1 += dy;
 }
+
+Square::Square(double _x0, double _y0, double _side): Rectangle(_x0, _y0, _x0+_side, _y0+_side){}

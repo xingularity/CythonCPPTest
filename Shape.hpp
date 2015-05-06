@@ -25,6 +25,11 @@ namespace shapes {
         double x0, y0, x1, y1;
     };
 
+    class Square: public Rectangle{
+    public:
+        Square(double _x0, double _y0, double _side);
+    };
+
     class Circle:public ShapeBase{
     public:
         Circle(double x0, double y0, double r);
@@ -80,4 +85,3 @@ void printComplex(std::complex<double> _comp);
 void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::complex<double> > > _vec);
 
 void printSet(std::set<std::string> _set);
-

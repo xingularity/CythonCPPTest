@@ -12,6 +12,13 @@ cdef extern from "Shape.hpp" namespace "shapes":
         double getArea()
         void move(double, double)
 
+    cdef cppclass Square:
+        Square(double, double, double) except +
+        double getLength()
+        double getHeight()
+        double getArea()
+        void move(double, double)
+
     cdef cppclass Circle:
         Circle(double, double, double) except +
         double getArea()
@@ -46,6 +53,21 @@ cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
     def __cinit__(self, double x0, double y0, double x1, double y1):
         self.thisptr = new Rectangle(x0, y0, x1, y1)
+    def __dealloc__(self):
+        del self.thisptr
+    def getLength(self):
+        return self.thisptr.getLength()
+    def getHeight(self):
+        return self.thisptr.getHeight()
+    def getArea(self):
+        return self.thisptr.getArea()
+    def move(self, dx, dy):
+        self.thisptr.move(dx, dy)
+
+cdef class PySquare:
+    cdef Square *thisptr
+    def __cinit__(self, double x0, double y0, double _side):
+        self.thisptr = new Square(x0, y0, _side)
     def __dealloc__(self):
         del self.thisptr
     def getLength(self):
