@@ -22,10 +22,10 @@ cdef extern from "Shape.hpp" namespace "shapes":
     cdef cppclass Square(Rectangle):
         Square(double, double, double) except +
 
-    cdef cppclass Circle:
+    cdef cppclass Circle(ShapeBase):
         Circle(double, double, double) except +
-        double getArea()
-        void move(double, double)
+        #double getArea()
+        #void move(double, double)
 
     cdef cppclass Ellipse[T]:
         Ellipse(double, double, T, T) except +
