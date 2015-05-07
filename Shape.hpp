@@ -70,6 +70,12 @@ namespace shapes {
     };
 }
 
+struct MyStruct{
+    double a;
+    double b;
+    double c;
+};
+
 std::vector<double> arr1DToDoubVector(double* _arr, int m);
 void print1DVector(std::vector<double> _arr);
 
@@ -85,3 +91,5 @@ void printComplex(std::complex<double> _comp);
 void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::complex<double> > > _vec);
 
 void printSet(std::set<std::string> _set);
+
+void printMyStruct(MyStruct _struct);

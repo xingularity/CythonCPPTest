@@ -55,7 +55,7 @@ void printMapOfComplexVec(std::map<double, std::vector<std::complex<double> > > 
             std::cout << data << " ";
 		std::cout << std::endl;
 	}
-    
+
 }
 
 void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::complex<double> > > _vec){
@@ -67,4 +67,10 @@ void printVecOfComplexPair(std::vector<std::pair<std::complex<double>, std::comp
 void printSet(std::set<std::string> _set){
 	for (auto& i: _set)
 		std::cout << i << std::endl;
+}
+
+void printMyStruct(MyStruct _struct){
+    std::cout << "a: " << _struct.a << std::endl;
+    std::cout << "b: " << _struct.b << std::endl;
+    std::cout << "c: " << _struct.c << std::endl;
 }

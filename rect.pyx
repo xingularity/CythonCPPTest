@@ -48,6 +48,11 @@ cdef extern from "Shape.hpp":
     cdef void printComplex(double complex _comp)
     cdef void printSet(set[string] _set)
     cdef void printVecOfComplexPair(vector[pair[complex, complex]])
+    cdef struct MyStruct:
+        double a
+        double b
+        double c
+    cdef void printMyStruct(MyStruct _struct)
 
 cdef class PyRectangle:
     cdef Rectangle *thisptr      # hold a C++ instance which we're wrapping
@@ -172,3 +177,6 @@ def CyPrintVecOfComplexPair(list _list not None):
 
 def CyPrintSet(_set not None):
     printSet(_set)
+
+def cyPrintMyStruct(dict _in not None):
+    printMyStruct(_in)
